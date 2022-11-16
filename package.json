@@ -1,0 +1,19 @@
+{
+  "name": "linkshortener",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "backend": "yarn workspace backend",
+    "shared": "yarn workspace shared",
+    "client": "yarn workspace client",
+    "start": "concurrently \"yarn backend start\" \"yarn client start\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
