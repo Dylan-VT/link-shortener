@@ -1,46 +1,82 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-dom";
+
+interface shortenedUrl {
+  shortened_link: string,
+  original_link: string
+}
+
 
 function App() {
-  const [post, setPost] = React.useState(null);
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8080/ping')
-    .then((response) => {
-      console.log(response.data);
-      setPost(response.data);
+  const [urlToShorten, setUrlToShorten] = React.useState("");
+  const [linkElements, setLinkElements] = React.useState(Array<JSX.Element>);
+  const [shortenedLink, setShortenedLink] = React.useState('\n')
+
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrlToShorten(e.target.value);
+  }
+
+  const handleShorten = async () => {
+    await axios.post(`http://localhost:8080/shorten?url=${urlToShorten}`,)
+    .then(res => {
+      setShortenedLink(res.data)
     })
-  }, [])
+  }
+
+  const handleGetAll = async () => {
+    var newElements = new Array<JSX.Element>
+    await axios.get('http://localhost:8080/getall')
+    .then(response => response.data.links.forEach((link: shortenedUrl) => {
+      newElements.push(DisplayLink({shortened_url: link.shortened_link, original_url: link.original_link}))
+    }))
+
+    setLinkElements(newElements);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code><Display text={post} /></code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          
-        </a>
-      </header>
+      <input onChange={handleInput} placeholder='test' />
+      <br />
+      <button onClick={handleShorten}>Shorten</button>
+      <br />
+      <a href={shortenedLink}>{shortenedLink}</a>
+      <br />
+      <button onClick={handleGetAll}>Get All</button>
+      <br />
+      {linkElements}
     </div>
   );
 }
 
+
+// this component handles the redirect
+export const Redirect = () => {
+  const location = useLocation()
+  useEffect(() => {
+    window.location.replace(`http://localhost:8080/${location.pathname.substring(1)}`)
+  }, [])
+  return (
+    <h1>Redirecting ..........</h1>
+  )
+}
+
 interface displayProps {
-  text: String | null
+  shortened_url: string,
+  original_url: string
 }
 
 
-const Display = (props: displayProps) => {
+const generateLinkDisplays = (links: Array<displayProps>) => {
+  const r = links.map((link) => DisplayLink(link))
+  return r
+}
+
+
+const DisplayLink = (props: displayProps): JSX.Element => {
   return (
-    <p>{ props.text }</p>
+    <p>{ props.shortened_url } -{'>'} { props.original_url }</p>
   )
 }
 
