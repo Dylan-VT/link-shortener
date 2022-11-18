@@ -8,7 +8,8 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@databases/mysql-schema-cli": "^1.1.0",
-    "@databases/mysql-typed": "^1.0.0"
+    "@databases/pg": "^5.4.1",
+    "@databases/pg-schema-cli": "^4.3.0",
+    "@databases/pg-typed": "^4.3.0"
   }
 }

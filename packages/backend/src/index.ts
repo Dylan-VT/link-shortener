@@ -44,7 +44,7 @@ server.get<{Querystring: IRequestUrl}>('/:shortened_url', async (request, respon
     else {
         const originalURL = redirect.original_link
         console.log(originalURL)
-        response.redirect(originalURL)
+        response.redirect(originalURL!)
     }
 })
 
