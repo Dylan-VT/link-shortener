@@ -14,7 +14,10 @@ function App() {
   const [linkElements, setLinkElements] = React.useState(Array<JSX.Element>);
   const [shortenedLink, setShortenedLink] = React.useState('\n')
 
+  useEffect(() => {
 
+  }, [])
+  linkElements.push(DisplayLink({shortened_url: "short", original_url:"long"}))
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUrlToShorten(e.target.value);
   }
@@ -28,6 +31,7 @@ function App() {
 
   const handleGetAll = async () => {
     var newElements = new Array<JSX.Element>
+    console.log(0)
     await axios.get('http://localhost:8080/getall')
     .then(response => response.data.links.forEach((link: shortenedUrl) => {
       newElements.push(DisplayLink({shortened_url: link.shortened_link, original_url: link.original_link}))

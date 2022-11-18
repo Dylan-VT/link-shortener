@@ -3,7 +3,9 @@ import { sql } from './database'
 
 export const insertLink = async (shortened_link: string, original_link: string) => {
     const original_link_lower = original_link.toLowerCase()
+    console.log(0)
     await links(db).insert({shortened_link, original_link: original_link_lower})
+    console.log(1)
 }
 
 
@@ -12,5 +14,12 @@ export const getLink = async (shortened_link: string) => {
 }
 
 export const getAllLinks = async () => {
-    return await links(db).untypedQuery(sql`SELECT * FROM links;`)
+    var res = {}
+    await links(db).untypedQuery(sql`SELECT * FROM links;`)
+    .then(response => {
+        res = response
+    })
+    .catch(err => console.log(err))
+
+    return res
 }

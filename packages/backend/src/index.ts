@@ -51,6 +51,7 @@ server.get<{Querystring: IRequestUrl}>('/:shortened_url', async (request, respon
 //gets all inputs, be careful with this
 server.get('/getall', async () => {
     const result = await getAllLinks()
+    
     return {links: result}
 })
 
@@ -69,7 +70,6 @@ server.post<{Querystring: IShortenUrl}>('/shorten', async (request, response) =>
 server.listen({ port: 8080 }, (err, address) => {
   if (err) {
     console.error(err)
-    process.exit(1)
   }
   console.log(`Server listening at ${address}`)
 })
