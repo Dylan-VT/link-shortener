@@ -2,7 +2,7 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import { insertLink, getLink, getAllLinks } from 'shared'
 
-const BASEURL = 'http://20.115.121.2/home/'
+const BASEURL = 'http://20.115.121.2/'
 interface IShortenUrl {
     url: string
   }
@@ -29,9 +29,9 @@ server.get('/ping', async (request, response) => {
 })
 
 //redirect to shortened url
-server.get<{Querystring: IRequestUrl}>('/:shortened_url', async (request, response) => {
+server.get<{Querystring: IRequestUrl}>('/url/:shortened_url', async (request, response) => {
     //strip input
-    const strippedShortenedUrl = request.url.substring(1)
+    const strippedShortenedUrl = request.url.substring(5)
     console.log(strippedShortenedUrl)
 
     // get the link from db

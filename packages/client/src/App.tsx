@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-dom";
 
-const API_URL = "http://20.115.121.2/"
+const API_URL = "http://127.0.0.1:8080"
 interface shortenedUrl {
   shortened_link: string,
   original_link: string
@@ -58,8 +58,9 @@ function App() {
 // this component handles the redirect
 export const Redirect = () => {
   const location = useLocation()
+  console.log(location.pathname)
   useEffect(() => {
-    window.location.replace(`${API_URL}/${location.pathname.substring(1)}`)
+    window.location.replace(`${API_URL}/url/${location.pathname.substring(1)}`)
   }, [])
   return (
     <h1>Redirecting ..........</h1>
