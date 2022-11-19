@@ -12,7 +12,7 @@ import {Redirect} from './App';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <App />
   },
   {
