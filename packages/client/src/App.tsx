@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-dom";
 
+const API_URL = "http://20.115.121.2"
 interface shortenedUrl {
   shortened_link: string,
   original_link: string
@@ -23,16 +24,15 @@ function App() {
   }
 
   const handleShorten = async () => {
-    await axios.post(`http://localhost:8080/shorten?url=${urlToShorten}`,)
+    await axios.post(`${API_URL}/shorten?url=${urlToShorten}`,)
     .then(res => {
       setShortenedLink(res.data)
     })
   }
 
   const handleGetAll = async () => {
-    var newElements = new Array<JSX.Element>
-    console.log(0)
-    await axios.get('http://localhost:8080/getall')
+    var newElements = new Array<JSX.Element>  
+    await axios.get(`${API_URL}/getall`)
     .then(response => response.data.links.forEach((link: shortenedUrl) => {
       newElements.push(DisplayLink({shortened_url: link.shortened_link, original_url: link.original_link}))
     }))
@@ -59,7 +59,7 @@ function App() {
 export const Redirect = () => {
   const location = useLocation()
   useEffect(() => {
-    window.location.replace(`http://localhost:8080/${location.pathname.substring(1)}`)
+    window.location.replace(`${API_URL}/${location.pathname.substring(1)}`)
   }, [])
   return (
     <h1>Redirecting ..........</h1>

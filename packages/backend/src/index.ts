@@ -2,7 +2,7 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import { insertLink, getLink, getAllLinks } from 'shared'
 
-const BASEURL = 'http://localhost:3000/'
+const BASEURL = 'http://20.115.121.2/'
 interface IShortenUrl {
     url: string
   }

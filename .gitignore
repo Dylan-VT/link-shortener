@@ -4,3 +4,5 @@ packages/*/dist
 *.tsbuildinfo
 .env
 .vscode/
+key
+key.pub
