@@ -3,7 +3,13 @@ import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-dom";
 
-const API_URL = "http://127.0.0.1:8080"
+
+
+
+
+const API_URL = "http://20.241.217.67:8080"
+
+
 interface shortenedUrl {
   shortened_link: string,
   original_link: string

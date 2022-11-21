@@ -1,5 +1,0 @@
-{
-    "ext": "*.ts",
-    "exec": "tsc --build && node dist/index.js"
-   }
-   
