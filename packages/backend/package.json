@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build:live": "nodemon",
-    "start": "yarn run build:live"
+    "start": "yarn run build:live",
+    "dev": "node dist/index.js"
   },
   "dependencies": {
     "@databases/mysql-schema-cli": "^1.1.0",

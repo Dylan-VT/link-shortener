@@ -6,3 +6,4 @@ packages/*/dist
 .vscode/
 key
 key.pub
+yarn.lock

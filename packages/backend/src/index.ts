@@ -67,8 +67,9 @@ server.post<{Querystring: IShortenUrl}>('/shorten', async (request, response) =>
 
 
 
-server.listen({ port: 8080 }, (err, address) => {
+server.listen({host:'0.0.0.0', port: 8080 }, (err, address) => {
   if (err) {
+    server.close()
     console.error(err)
   }
   console.log(`Server listening at ${address}`)

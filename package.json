@@ -11,7 +11,8 @@
     "backend": "yarn workspace backend",
     "shared": "yarn workspace shared",
     "client": "yarn workspace client",
-    "start": "concurrently \"yarn backend start\" \"yarn client start\""
+    "start": "concurrently \"yarn backend start\" \"yarn client start\"",
+    "dev": "concurrently \"yarn backend run dev\" \"yarn client start\""
   },
   "devDependencies": {
     "concurrently": "^7.5.0"
