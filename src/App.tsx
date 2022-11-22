@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-
 
 
 
-const API_URL = "http://20.241.217.67:8080"
+export const API_URL = "http://127.0.0.1:8080"
 
 
 interface shortenedUrl {

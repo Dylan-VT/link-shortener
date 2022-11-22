@@ -4,16 +4,26 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { LoginView } from './components/login';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Redirect} from './App';
+import { CreateAccountView } from './components/createAccount';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />
+  },
+  {
+    path: '/login',
+    element: <LoginView />
+  },
+  {
+    path: '/signup',
+    element: <CreateAccountView />
   },
   {
     path: "/:url",
