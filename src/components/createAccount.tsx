@@ -68,6 +68,7 @@ export const CreateAccountView = () => {
 
             <button onClick={handleCreateAccountClick} value='Create Account'>Create Account</button>
             
+            <button onClick={() => window.location.replace(`/`)}>Home</button>
         </div>  
     )
 }

@@ -10,6 +10,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Redirect} from './App';
 import { CreateAccountView } from './components/createAccount';
+import { AccountView } from './components/accountView';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <CreateAccountView />
+  },
+  {
+    path: '/account',
+    element: <AccountView />
   },
   {
     path: "/:url",
