@@ -11,12 +11,17 @@ import reportWebVitals from './reportWebVitals';
 import {Redirect} from './App';
 import { CreateAccountView } from './components/createAccount';
 import { AccountView } from './components/accountView';
+import { Home } from './pages/home';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />
+  },
+  {
+    path: "/home",
+    element: <Home />
   },
   {
     path: '/login',
