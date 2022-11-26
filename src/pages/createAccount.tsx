@@ -1,11 +1,12 @@
 import React from "react"
 import axios from "axios"
 import { API_URL } from "../App"
+import { Header } from "../components/header"
 
 const MIN_USERNAME_LENGTH = 5
 const MIN_PASSWORD_LENGTH = 9
 
-export const CreateAccountView = () => {
+export const CreateAccountPage = () => {
     //declare states
     const [ email, setEmail ] = React.useState("")
     const [ username, setUsername ] = React.useState("")
@@ -54,7 +55,8 @@ export const CreateAccountView = () => {
 
 
     return (
-        <div className="signup-page" style={{textAlign: "center"}}>
+        <div className="bg-primary w-screen h-screen" style={{textAlign: "center"}}>
+            <Header />
             <form id='signup-info'>
                 <input onChange={handleEmailInput} type='email' placeholder='email' required/> <br /> <br />
                 <input onChange={handleUsernameInput} placeholder='username' minLength={5}  maxLength={32} required/> <br /> <br />

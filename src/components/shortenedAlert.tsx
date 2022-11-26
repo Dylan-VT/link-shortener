@@ -11,8 +11,8 @@ export const ShortenedAlert = (props: shortenedAlertProps) => {
     return (
         <div>
             <h1>
-                <a href={`${THIS_URL}${props.key}`}>
-                    {`${THIS_URL}${props.key}`}
+                <a href={`${THIS_URL}/${props.key}`}>
+                    {`${THIS_URL}/${props.key}`}
                 </a>
             </h1>
         </div>

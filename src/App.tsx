@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link, useLocation } from "react-router-dom";
-import { DisplayShortenedLink, generateDisplayShortenedLink } from './components/linkDisplay';
 
 
 
 
 export const API_URL = "http://127.0.0.1:8080"
-
+/*
 
 interface shortenedUrl {
   key: string,
@@ -46,6 +45,7 @@ function App() {
   const handleSignupButton = () => {
     window.location.replace(`/signup`)
   }
+  
   return (
     <div className="App">
       <input onChange={handleInput} placeholder='test' />
@@ -66,6 +66,17 @@ function App() {
 }
 
 
+
+
+interface displayProps {
+  key: string,
+  original_url: string
+}
+
+
+
+export default App;
+*/
 // this component handles the redirect
 export const Redirect = () => {
   const location = useLocation()
@@ -77,12 +88,3 @@ export const Redirect = () => {
     <h1>Redirecting ..........</h1>
   )
 }
-
-interface displayProps {
-  key: string,
-  original_url: string
-}
-
-
-
-export default App;
